@@ -14,7 +14,6 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         renderscriptTargetApi 24
         renderscriptSupportModeEnabled true
     }
@@ -36,7 +35,4 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:4.5.0"
     kapt "com.github.bumptech.glide:compiler:4.5.0"
     implementation project(':coloredshadow')
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
