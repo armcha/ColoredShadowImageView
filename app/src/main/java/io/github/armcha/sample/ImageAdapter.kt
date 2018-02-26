@@ -46,11 +46,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
                     .load(item.imageUrl)
                     .transform(CircleCrop())
                     //.transform(RoundedCorners(206))
-                    .into(object : SimpleTarget<Bitmap>() {
-                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                            shadowView.setImageBitmap(resource)
-                        }
-                    })
+                    .into(shadowView)
         }
     }
 }

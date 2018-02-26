@@ -8,8 +8,8 @@
 
     <io.github.armcha.coloredshadow.ShadowImageView
         android:id="@+id/shadowImage"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:src="@drawable/android"

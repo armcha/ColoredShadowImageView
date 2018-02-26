@@ -73,7 +73,7 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
     private fun makeBlurShadow() {
         val blur = BlurShadow.blur(this, width, height, 7)
         val colorMatrix = ColorMatrix()
-        colorMatrix.setSaturation(2f)
+        colorMatrix.setSaturation(1.2f)
         background = BitmapDrawable(resources, blur).apply {
             this.colorFilter = ColorMatrixColorFilter(colorMatrix)
         }

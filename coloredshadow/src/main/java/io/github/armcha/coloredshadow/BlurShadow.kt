@@ -14,6 +14,11 @@ object BlurShadow {
 
     private var renderScript: RenderScript? = null
 
+    fun init(context: Context) {
+        if (renderScript == null)
+            renderScript = RenderScript.create(context)
+    }
+
     fun blur(view: View, width: Int, height: Int, radius: Int): Bitmap {
         val src = getBitmapForView(view, 0.2f, width, height)
         val input = Allocation.createFromBitmap(renderScript, src)
@@ -40,10 +45,5 @@ object BlurShadow {
         canvas.matrix = matrix
         source.draw(canvas)
         return bitmap
-    }
-
-    fun init(context: Context) {
-        if (renderScript == null)
-            renderScript = RenderScript.create(context)
     }
 }
