@@ -1,6 +1,7 @@
 package io.github.armcha.sample
 
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -42,11 +43,15 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
         fun bind(item: Item) {
             text.text = item.name
             GlideApp.with(itemView.context)
-                    .asBitmap()
+                    //.asBitmap()
                     .load(item.imageUrl)
-                    .transform(CircleCrop())
+                    //.transform(CircleCrop())
                     //.transform(RoundedCorners(206))
-                    .into(shadowView)
+                    .into(object :SimpleTarget<Drawable>(){
+                        override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                            shadowView.setImageDrawable(resource)
+                        }
+                    })
         }
     }
 }

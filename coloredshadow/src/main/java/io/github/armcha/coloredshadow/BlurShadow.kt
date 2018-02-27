@@ -9,6 +9,7 @@ import android.support.v8.renderscript.Element
 import android.support.v8.renderscript.RenderScript
 import android.support.v8.renderscript.ScriptIntrinsicBlur
 import android.view.View
+import android.widget.ImageView
 
 object BlurShadow {
 
@@ -19,8 +20,8 @@ object BlurShadow {
             renderScript = RenderScript.create(context)
     }
 
-    fun blur(view: View, width: Int, height: Int, radius: Int): Bitmap {
-        val src = getBitmapForView(view, 0.2f, width, height)
+    fun blur(view: ImageView, width: Int, height: Int, radius: Int): Bitmap {
+        val src = getBitmapForView(view, 0.25f, width, height)
         val input = Allocation.createFromBitmap(renderScript, src)
         val output = Allocation.createTyped(renderScript, input.type)
         val script = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
@@ -33,7 +34,7 @@ object BlurShadow {
         return src
     }
 
-    private fun getBitmapForView(source: View, downscaleFactor: Float, width: Int, height: Int): Bitmap {
+    private fun getBitmapForView(view: ImageView, downscaleFactor: Float, width: Int, height: Int): Bitmap {
         val bitmap = Bitmap.createBitmap(
                 (width * downscaleFactor).toInt(),
                 (height * downscaleFactor).toInt(),
@@ -43,7 +44,7 @@ object BlurShadow {
         val matrix = Matrix()
         matrix.preScale(downscaleFactor, downscaleFactor)
         canvas.matrix = matrix
-        source.draw(canvas)
+        view.draw(canvas)
         return bitmap
     }
 }
