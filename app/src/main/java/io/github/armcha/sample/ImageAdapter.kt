@@ -1,13 +1,11 @@
 package io.github.armcha.sample
 
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import io.github.armcha.coloredshadow.ShadowImageView
@@ -42,12 +40,16 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
         fun bind(item: Item) {
             text.text = item.name
+            //if (adapterPosition % 2 == 0)
+            //    shadowView.radiusOffset = 1f
+          //  else
+                //shadowView.shadowColor = R.color.green
             GlideApp.with(itemView.context)
                     //.asBitmap()
                     .load(item.imageUrl)
                     //.transform(CircleCrop())
                     //.transform(RoundedCorners(206))
-                    .into(object :SimpleTarget<Drawable>(){
+                    .into(object : SimpleTarget<Drawable>() {
                         override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                             shadowView.setImageDrawable(resource)
                         }

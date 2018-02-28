@@ -8,8 +8,8 @@ import android.support.v8.renderscript.Allocation
 import android.support.v8.renderscript.Element
 import android.support.v8.renderscript.RenderScript
 import android.support.v8.renderscript.ScriptIntrinsicBlur
-import android.view.View
 import android.widget.ImageView
+import io.github.armcha.coloredshadow.ShadowImageView.Companion.DOWNSCALE_FACTOR
 
 object BlurShadow {
 
@@ -20,13 +20,13 @@ object BlurShadow {
             renderScript = RenderScript.create(context)
     }
 
-    fun blur(view: ImageView, width: Int, height: Int, radius: Int): Bitmap {
-        val src = getBitmapForView(view, 0.25f, width, height)
+    fun blur(view: ImageView, width: Int, height: Int, radius: Float): Bitmap {
+        val src = getBitmapForView(view, DOWNSCALE_FACTOR, width, height)
         val input = Allocation.createFromBitmap(renderScript, src)
         val output = Allocation.createTyped(renderScript, input.type)
         val script = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
         script.apply {
-            setRadius(radius.toFloat())
+            setRadius(radius)
             setInput(input)
             forEach(output)
         }
