@@ -37,6 +37,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
         private val text by lazy { itemView.findViewById<TextView>(R.id.text) }
 
         fun bind(item: Item) {
+            shadowView.radiusOffset = 0.6f
             shadowView.setImageResource(R.drawable.place_holder, withShadow = false)
             text.text = item.name
             GlideApp.with(itemView.context)
