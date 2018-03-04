@@ -1,8 +1,8 @@
 # ColoredShadowImageView
 
-## Library coming soon
+## Library is coming soon
 
-![](screenShots/video.png)
+![](screenShots/video.gif)
 ![](screenShots/firstScreen.png)
 ![](screenShots/secondScreen.png)
 ![](screenShots/circle.png)
