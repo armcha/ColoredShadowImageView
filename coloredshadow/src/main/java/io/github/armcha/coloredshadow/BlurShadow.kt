@@ -11,6 +11,7 @@ import android.support.v8.renderscript.ScriptIntrinsicBlur
 import android.widget.ImageView
 import io.github.armcha.coloredshadow.ShadowImageView.Companion.DOWNSCALE_FACTOR
 
+
 object BlurShadow {
 
     private var renderScript: RenderScript? = null
@@ -20,8 +21,8 @@ object BlurShadow {
             renderScript = RenderScript.create(context)
     }
 
-    fun blur(view: ImageView, width: Int, height: Int, radius: Float): Bitmap {
-        val src = getBitmapForView(view, DOWNSCALE_FACTOR, width, height)
+    fun blur(view: ImageView, width: Int, height: Int, radius: Float): Bitmap? {
+        val src = getBitmapForView(view, DOWNSCALE_FACTOR, width, height) ?: return null
         val input = Allocation.createFromBitmap(renderScript, src)
         val output = Allocation.createTyped(renderScript, input.type)
         val script = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
@@ -34,11 +35,11 @@ object BlurShadow {
         return src
     }
 
-    private fun getBitmapForView(view: ImageView, downscaleFactor: Float, width: Int, height: Int): Bitmap {
+    private fun getBitmapForView(view: ImageView, downscaleFactor: Float, width: Int, height: Int): Bitmap? {
         val bitmap = Bitmap.createBitmap(
                 (width * downscaleFactor).toInt(),
                 (height * downscaleFactor).toInt(),
-                Bitmap.Config.ARGB_4444)
+                Bitmap.Config.ARGB_8888)
 
         val canvas = Canvas(bitmap)
         val matrix = Matrix()

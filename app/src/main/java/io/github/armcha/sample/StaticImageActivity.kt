@@ -13,36 +13,25 @@ class StaticImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_static_image)
         val image = findViewById<ShadowImageView>(R.id.shadowImage).apply {
-            radiusOffset = 0.1F
+            radiusOffset = 0.4f
+            setImageResource(R.drawable.android)
         }
-        val seekBar = findViewById<SeekBar>(R.id.seekBar)
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                if (progress == 0)
-                    return
-                image.radiusOffset = progress / 100f
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-        })
 
         findViewById<Button>(R.id.red).setOnClickListener {
             image.shadowColor = R.color.red
+            image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.blue).setOnClickListener {
             image.shadowColor = R.color.blue
+            image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.green).setOnClickListener {
             image.shadowColor = R.color.green
+            image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.gray).setOnClickListener {
             image.shadowColor = R.color.gray
+            image.setImageResource(R.drawable.android)
         }
     }
 }

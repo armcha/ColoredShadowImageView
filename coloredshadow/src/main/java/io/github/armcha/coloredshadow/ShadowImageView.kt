@@ -11,35 +11,24 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import kotlin.properties.Delegates
 
 class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppCompatImageView(context, attributes) {
 
     companion object {
-        internal const val DOWNSCALE_FACTOR = 0.25f
-        private const val DEFAULT_RADIUS = 0.6f
+        private const val DEFAULT_RADIUS = 0.5f
         private const val DEFAULT_COLOR = -1
         private const val SATURATION = 1.3f
         private const val TOP_OFFSET = 2f
         private const val PADDING = 20f
+        internal const val DOWNSCALE_FACTOR = 0.25f
     }
 
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0)
-    var radiusOffset = DEFAULT_RADIUS
-        set(value) {
-            // Log.e("drawable ", "drawable " + drawable)
-            //Log.e("drawable ", "drawable " + (field == value))
-            if (value <= 0F || value > 1) {
-                throw IllegalArgumentException("Radius out of range (0.0 < r <= 1.0)")
-            }
-            setBlurShadow()
-            field = value
-        }
+    var radiusOffset by Delegates.vetoable(DEFAULT_RADIUS, { _, _, newValue ->
+        newValue > 0F || newValue <= 1
+    })
 
     var shadowColor = DEFAULT_COLOR
-        set(value) {
-            field = value
-            setBlurShadow()
-        }
 
     init {
         BlurShadow.init(context.applicationContext)
@@ -57,21 +46,20 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
         setBlurShadow { super.setImageDrawable(ContextCompat.getDrawable(context, resId)) }
     }
 
+    fun setImageResource(resId: Int, withShadow: Boolean) {
+        if (withShadow) {
+            setImageResource(resId)
+        } else {
+            super.setImageResource(resId)
+        }
+    }
+
     override fun setImageDrawable(drawable: Drawable?) {
         setBlurShadow { super.setImageDrawable(drawable) }
     }
 
     override fun setScaleType(scaleType: ScaleType?) {
         super.setScaleType(ScaleType.CENTER_CROP)
-    }
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val specMode = View.MeasureSpec.getMode(heightMeasureSpec)
-        val specSize = View.MeasureSpec.getSize(heightMeasureSpec)
-        if (specMode == View.MeasureSpec.AT_MOST) {
-            //TODO
-        }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     private fun setBlurShadow(setImage: () -> Unit = {}) {
@@ -85,7 +73,6 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
                     viewTreeObserver.removeOnPreDrawListener(this)
                     setImage()
                     makeBlurShadow()
-                    //super@ShadowImageView.setImageBitmap(null)
                     return false
                 }
             }
@@ -96,10 +83,9 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
     private fun makeBlurShadow() {
         var radius = resources.getInteger(R.integer.radius).toFloat()
         radius *= 2 * radiusOffset
-        Log.e("radius ", "radius ${hashCode()} " + radius)
+        Log.e("radius ", "radius $radius")
         val blur = BlurShadow.blur(this, width, height - dpToPx(TOP_OFFSET), radius)
-        val colorMatrix = ColorMatrix()
-        colorMatrix.setSaturation(SATURATION)
+        val colorMatrix = ColorMatrix().apply { setSaturation(SATURATION) }
         background = BitmapDrawable(resources, blur).apply {
             this.colorFilter = ColorMatrixColorFilter(colorMatrix)
             applyShadowColor(this)
