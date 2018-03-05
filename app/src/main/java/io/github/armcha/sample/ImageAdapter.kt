@@ -1,12 +1,14 @@
 package io.github.armcha.sample
 
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.ViewTarget
 import com.bumptech.glide.request.transition.Transition
 import io.github.armcha.coloredshadow.ShadowImageView
 import io.github.armcha.sample.data.DataSource
@@ -37,14 +39,29 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
         private val text by lazy { itemView.findViewById<TextView>(R.id.text) }
 
         fun bind(item: Item) {
-            shadowView.radiusOffset = 0.6f
-            shadowView.setImageResource(R.drawable.place_holder, withShadow = false)
             text.text = item.name
             GlideApp.with(itemView.context)
                     .asBitmap()
                     .load(item.imageUrl)
+                    .placeholder(R.drawable.place_holder)
+                    .error(R.drawable.place_holder)
                     //.transform(CircleCrop())
-                    .into(object : SimpleTarget<Bitmap>() {
+                    .into(object : ViewTarget<ImageView, Bitmap>(shadowView) {
+                        override fun onLoadStarted(placeholder: Drawable?) {
+                            super.onLoadStarted(placeholder)
+                            shadowView.setImageDrawable(placeholder, withShadow = false)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                            super.onLoadCleared(placeholder)
+                            shadowView.setImageDrawable(placeholder, withShadow = false)
+                        }
+
+                        override fun onLoadFailed(errorDrawable: Drawable?) {
+                            super.onLoadFailed(errorDrawable)
+                            shadowView.setImageDrawable(errorDrawable, withShadow = false)
+                        }
+
                         override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                             shadowView.setImageBitmap(resource)
                         }

@@ -4,20 +4,20 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.support.annotation.FloatRange
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import android.view.ViewTreeObserver
 import kotlin.properties.Delegates
+
 
 class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppCompatImageView(context, attributes) {
 
     companion object {
         private const val DEFAULT_RADIUS = 0.5f
         private const val DEFAULT_COLOR = -1
+        private const val BRIGHTNESS = -25f
         private const val SATURATION = 1.3f
         private const val TOP_OFFSET = 2f
         private const val PADDING = 20f
@@ -50,7 +50,17 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
         if (withShadow) {
             setImageResource(resId)
         } else {
+            background = null
             super.setImageResource(resId)
+        }
+    }
+
+    fun setImageDrawable(drawable: Drawable?, withShadow: Boolean) {
+        if (withShadow) {
+            setImageDrawable(drawable)
+        } else {
+            background = null
+            super.setImageDrawable(drawable)
         }
     }
 
@@ -85,11 +95,18 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
         radius *= 2 * radiusOffset
         Log.e("radius ", "radius $radius")
         val blur = BlurShadow.blur(this, width, height - dpToPx(TOP_OFFSET), radius)
-        val colorMatrix = ColorMatrix().apply { setSaturation(SATURATION) }
+        //brightness -255..255 -25 is default
+        val colorMatrix = ColorMatrix(floatArrayOf(
+                1f, 0f, 0f, 0f, BRIGHTNESS,
+                0f, 1f, 0f, 0f, BRIGHTNESS,
+                0f, 0f, 1f, 0f, BRIGHTNESS,
+                0f, 0f, 0f, 1f, 0f)).apply { setSaturation(SATURATION) }
+
         background = BitmapDrawable(resources, blur).apply {
             this.colorFilter = ColorMatrixColorFilter(colorMatrix)
             applyShadowColor(this)
         }
+        //super.setImageDrawable(null)
     }
 
     private fun applyShadowColor(bitmapDrawable: BitmapDrawable) {
