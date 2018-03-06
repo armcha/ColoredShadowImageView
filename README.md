@@ -15,7 +15,6 @@
 The current minSDK version is API level 16.
 ### Download :arrow_down:
 -----------------------
-
 Gradle:
 ```groovy
 implementation 'com.github.armcha:ColoredShadowImageView:1.1.0'
@@ -101,25 +100,31 @@ or from xml
    app:shadowColor="@color/colorAccent"
 ```
 
-Current limitations: 
+Current limitations: :triangular_flag_on_post: 
+
 -You can't use the library when setting width or height to "WRAP_CONTENT"
 
-## Contact
+## Contact :book:
 
 Pull requests are more than welcome.
 
 
 :arrow_forward:  **Email**: chatikyana@gmail.com
+
 :arrow_forward:  **Medium**: https://medium.com/@chatikyan
+
 :arrow_forward:  **Twitter**: https://twitter.com/ArmanChatikyan
+
 :arrow_forward:  **Facebook**: https://web.facebook.com/chatikyana
+
 :arrow_forward:  **Google +**: https://plus.google.com/+ArmanChatikyan
+
 :arrow_forward:  **Website**: https://armcha.github.io/
 
 License
 --------
 
-      PlayTabLayout
+      ColoredShadowImageView
       Copyright (c) 2018 Arman Chatikyan (https://github.com/armcha/ColoredShadowImageView).
 
       Licensed under the Apache License, Version 2.0 (the "License");
