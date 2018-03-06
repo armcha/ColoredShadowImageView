@@ -22,7 +22,13 @@ implementation 'com.github.armcha:ColoredShadowImageView:1.0.0'
 ```
 ## Setup and usage
 
-1. Static image
+1. You also need to add RenderScript to your app module. Add these lines to the defaultConfig block of your build.gradle.
+```groovy
+renderscriptTargetApi YOUR_TARGET_SDK_VERSION
+renderscriptSupportModeEnabled true 
+```
+
+2. Static image
 ```xml
 <io.github.armcha.coloredshadow.ShadowImageView
         android:id="@+id/shadowImage"
@@ -40,7 +46,7 @@ Or
   }
 ```
 
-2. If you are using Glide, use it in this way.
+3. If you are using Glide, use it in this way.
 Glide transformations are also supported.
 Now we have some limitations for Glide transitions.
 
