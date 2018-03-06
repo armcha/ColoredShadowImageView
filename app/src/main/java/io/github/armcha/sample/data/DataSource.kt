@@ -5,6 +5,7 @@ object DataSource {
     val items by lazy {
         mutableListOf<Item>().apply {
             repeat(5) {
+                add(Item("Google", "http://diylogodesigns.com/blog/wp-content/uploads/2016/04/google-logo-icon-PNG-Transparent-Background-768x768.png"))
                 add(Item("Beach", "https://cdn.pixabay.com/photo/2017/11/15/20/17/beach-2952391_640.jpg"))
                 add(Item("Strawberries", "https://cdn.pixabay.com/photo/2016/05/16/17/59/strawberries-1396330_640.jpg"))
                 add(Item("Flower", "https://cdn.pixabay.com/photo/2018/02/08/22/27/flower-3140492_640.jpg"))

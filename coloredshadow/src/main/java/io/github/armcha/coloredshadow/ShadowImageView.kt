@@ -111,8 +111,7 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
 
     private fun applyShadowColor(bitmapDrawable: BitmapDrawable) {
         if (shadowColor != DEFAULT_COLOR) {
-            val color = ContextCompat.getColor(context, shadowColor)
-            bitmapDrawable.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+            bitmapDrawable.colorFilter = PorterDuffColorFilter(shadowColor, PorterDuff.Mode.SRC_IN)
         }
     }
 }
