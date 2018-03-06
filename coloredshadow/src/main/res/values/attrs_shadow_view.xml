@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="ShadowView">
+        <attr name="radiusOffset" format="float" />
+        <attr name="shadowColor" format="color" />
+    </declare-styleable>
+</resources>

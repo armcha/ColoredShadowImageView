@@ -38,3 +38,4 @@ publish {
     licences = ['MIT']
     website = 'https://github.com/armcha/ColoredShadowImageView'
 }
+apply plugin: 'kotlin-android-extensions'

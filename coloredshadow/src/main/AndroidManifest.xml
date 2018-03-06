@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.github.armcha.coloredshadow" />
+<manifest package="io.github.armcha.coloredshadow" />

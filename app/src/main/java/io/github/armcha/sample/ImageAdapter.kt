@@ -1,7 +1,5 @@
 package io.github.armcha.sample
 
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -41,7 +39,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
         fun bind(item: Item) {
             text.text = item.name
-            shadowView.radiusOffset = 0.7f
+            shadowView.radiusOffset = 0.6f
             //shadowView.shadowColor = Color.GRAY
             GlideApp.with(itemView.context)
                     .load(item.imageUrl)

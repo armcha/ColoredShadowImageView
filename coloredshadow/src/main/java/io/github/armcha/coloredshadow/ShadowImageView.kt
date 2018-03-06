@@ -36,6 +36,10 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
         super.setScaleType(ScaleType.CENTER_CROP)
         val padding = dpToPx(PADDING)
         setPadding(padding, padding, padding, padding)
+        val typedArray = context.obtainStyledAttributes(attributes, R.styleable.ShadowView, 0, 0)
+        shadowColor = typedArray.getColor(R.styleable.ShadowView_shadowColor, DEFAULT_COLOR)
+        radiusOffset = typedArray.getFloat(R.styleable.ShadowView_radiusOffset, DEFAULT_RADIUS)
+        typedArray.recycle()
     }
 
     override fun setImageBitmap(bm: Bitmap?) {
@@ -54,6 +58,15 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
             super.setImageResource(resId)
         }
     }
+
+//    fun setImageBitmap(bm: Bitmap?, withShadow: Boolean) {
+//        if (withShadow) {
+//            setImageResource(resId)
+//        } else {
+//            background = null
+//            super.setImageResource(resId)
+//        }
+//    }
 
     fun setImageDrawable(drawable: Drawable?, withShadow: Boolean) {
         if (withShadow) {
@@ -93,7 +106,6 @@ class ShadowImageView(context: Context, attributes: AttributeSet? = null) : AppC
     private fun makeBlurShadow() {
         var radius = resources.getInteger(R.integer.radius).toFloat()
         radius *= 2 * radiusOffset
-        Log.e("radius ", "radius $radius")
         val blur = BlurShadow.blur(this, width, height - dpToPx(TOP_OFFSET), radius)
         //brightness -255..255 -25 is default
         val colorMatrix = ColorMatrix(floatArrayOf(
