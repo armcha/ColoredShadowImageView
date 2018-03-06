@@ -1,10 +1,14 @@
 # ColoredShadowImageView
 
-## ColoredShadowImageView allows you to create beautiful shadow, based on image colors.
+### ColoredShadowImageView allows you to create beautiful shadow, based on image colors.
 
 ![](screenShots/compare.png)
 
-![](screenShots/video.gif)
+![](screenShots/firstScreen.png)
+![](screenShots/secondScreen.png)
+
+![](screenShots/firstCircle.png)
+![](screenShots/secondCircle.png)
 
 ### Download sample [apk](https://github.com/armcha/PlayTabLayout/tree/master/art/app.apk)
 
@@ -25,6 +29,8 @@ implementation 'com.github.armcha:ColoredShadowImageView:1.0.0'
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:src="@drawable/android"
+        app:radiusOffset="0.6"
+        app:shadowColor="@color/colorAccent"
 ```
 Or
 
@@ -82,10 +88,8 @@ You can also change the shadow color
   shadowImageView.shadowColor = ContextCompat.getColor(context,R.color.green) //or Color.RED
   shadowImageView.setImageResource(R.drawable.android)
 ```
-
-
-
-![](screenShots/firstScreen.png)
-![](screenShots/secondScreen.png)
-
-![](screenShots/circle.png)
+or from xml
+```xml
+   app:radiusOffset="0.6"
+   app:shadowColor="@color/colorAccent"
+```
