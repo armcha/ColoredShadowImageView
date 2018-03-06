@@ -1,6 +1,6 @@
 # ColoredShadowImageView
 
-ColoredShadowImageView allows you to create beautiful shadow around the image  based on corresponding area colors.
+ColoredShadowImageView allows you to create a beautiful shadow around the image based on corresponding area colors.
 
 ![](screenShots/compare.png)
 
