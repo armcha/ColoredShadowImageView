@@ -1,11 +1,9 @@
 package io.github.armcha.sample
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import android.widget.SeekBar
 import io.github.armcha.coloredshadow.ShadowImageView
 
 
@@ -20,19 +18,19 @@ class StaticImageActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.red).setOnClickListener {
-            image.shadowColor = R.color.red
+            image.shadowColor = ContextCompat.getColor(this@StaticImageActivity, R.color.red)
             image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.blue).setOnClickListener {
-            image.shadowColor = R.color.blue
+            image.shadowColor = ContextCompat.getColor(this@StaticImageActivity, R.color.blue)
             image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.green).setOnClickListener {
-            image.shadowColor = R.color.green
+            image.shadowColor = ContextCompat.getColor(this@StaticImageActivity, R.color.green)
             image.setImageResource(R.drawable.android)
         }
         findViewById<Button>(R.id.gray).setOnClickListener {
-            image.shadowColor = R.color.gray
+            image.shadowColor = ContextCompat.getColor(this@StaticImageActivity, R.color.gray)
             image.setImageResource(R.drawable.android)
         }
     }
