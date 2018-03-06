@@ -81,7 +81,7 @@ GlideApp.with(itemView.context)
 ## Customizations
 
 You can change shadow radius.
-Default radius is **0.5**. You can change it between 0 and 1. **(0 > radius >=1)**
+Default radius is **0.5**. You can change it between 0 and 1. **(0 < radius >=1)**
 ```kotlin
   shadowImageView.radiusOffset = 0.4f
   shadowImageView.setImageResource(R.drawable.android)
