@@ -1,6 +1,6 @@
 # ColoredShadowImageView
 
-### ColoredShadowImageView allows you to create beautiful shadow around the image  based on corresponding area colors.
+ColoredShadowImageView allows you to create beautiful shadow around the image  based on corresponding area colors.
 
 ![](screenShots/compare.png)
 
@@ -33,9 +33,7 @@ renderscriptSupportModeEnabled true
         android:id="@+id/shadowImage"
         android:layout_width="300dp"
         android:layout_height="400dp"
-        android:src="@drawable/android"
-        app:radiusOffset="0.6"
-        app:shadowColor="@color/colorAccent"
+        android:src="@drawable/android"/>
 ```
 Or
 
@@ -83,7 +81,7 @@ GlideApp.with(itemView.context)
 ## Customizations
 
 You can change shadow radius.
-Default radius is 0.5. You can change it between 0 and 1. (0 > radius >=1)
+Default radius is **0.5**. You can change it between 0 and 1. **(0 > radius >=1)**
 ```kotlin
   shadowImageView.radiusOffset = 0.4f
   shadowImageView.setImageResource(R.drawable.android)
