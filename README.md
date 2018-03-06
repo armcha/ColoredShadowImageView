@@ -10,15 +10,15 @@
 ![](screenShots/firstCircle.png)
 ![](screenShots/secondCircle.png)
 
-### Download sample [apk](https://github.com/armcha/PlayTabLayout/tree/master/art/app.apk)
+### Download sample [apk](https://github.com/armcha/ColoredShadowImageView/blob/master/screenShots/sample.apk)
 
 The current minSDK version is API level 16.
-### Download
+### Download :arrow_down:
 -----------------------
 
 Gradle:
 ```groovy
-implementation 'com.github.armcha:ColoredShadowImageView:1.0.0'
+implementation 'com.github.armcha:ColoredShadowImageView:1.1.0'
 ```
 ## Setup and usage
 
@@ -108,12 +108,13 @@ Current limitations:
 
 Pull requests are more than welcome.
 
-- **Email**: chatikyana@gmail.com
-- **Medium**: https://medium.com/@chatikyan
-- **Twitter**: https://twitter.com/ArmanChatikyan
-- **Facebook**: https://web.facebook.com/chatikyana
-- **Google +**: https://plus.google.com/+ArmanChatikyan
-- **Website**: https://armcha.github.io/
+
+:arrow_forward:  **Email**: chatikyana@gmail.com
+:arrow_forward:  **Medium**: https://medium.com/@chatikyan
+:arrow_forward:  **Twitter**: https://twitter.com/ArmanChatikyan
+:arrow_forward:  **Facebook**: https://web.facebook.com/chatikyana
+:arrow_forward:  **Google +**: https://plus.google.com/+ArmanChatikyan
+:arrow_forward:  **Website**: https://armcha.github.io/
 
 License
 --------

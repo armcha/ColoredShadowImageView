@@ -39,7 +39,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
         fun bind(item: Item) {
             text.text = item.name
-            shadowView.radiusOffset = 0.6f
+            shadowView.radiusOffset = 0.7f
             //shadowView.shadowColor = Color.GRAY
             GlideApp.with(itemView.context)
                     .load(item.imageUrl)

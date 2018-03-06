@@ -33,9 +33,8 @@ dependencies {
 publish {
     groupId = 'com.github.armcha'
     artifactId = 'ColoredShadowImageView'
-    publishVersion = '1.0.0'
+    publishVersion = '1.1.0'
     desc = 'ColoredShadowImageView'
     licences = ['MIT']
     website = 'https://github.com/armcha/ColoredShadowImageView'
 }
-apply plugin: 'kotlin-android-extensions'
