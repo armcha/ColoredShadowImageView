@@ -98,10 +98,15 @@ or from xml
    app:shadowColor="@color/colorAccent"
 ```
 
-Current limitations: :triangular_flag_on_post: 
+## Current limitations: :triangular_flag_on_post: 
 
 -You can't use the library when setting width or height to "WRAP_CONTENT"
 
+## Add proguard rules if necessary:
+
+```groovy
+-keep class android.support.v8.renderscript.** { *; }
+```
 ## Contact :book:
 
 Pull requests are more than welcome.
