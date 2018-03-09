@@ -5,10 +5,7 @@ ColoredShadowImageView allows you to create a beautiful shadow around the image 
 ![](screenShots/compare.png)
 
 ![](screenShots/firstScreen.png)
-![](screenShots/secondScreen.png)
-
 ![](screenShots/firstCircle.png)
-![](screenShots/secondCircle.png)
 
 ### Download sample [apk](https://github.com/armcha/ColoredShadowImageView/blob/master/screenShots/sample.apk)
 
