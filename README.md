@@ -97,7 +97,7 @@ or from xml
 
 ## Current limitations: :triangular_flag_on_post: 
 
--You can't use the library when setting width or height to "WRAP_CONTENT"
+- You can't use the library when setting width or height to `WRAP_CONTENT`
 
 ## Add proguard rules if necessary:
 
